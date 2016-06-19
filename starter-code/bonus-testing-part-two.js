@@ -59,21 +59,22 @@ var tooHungryDay;
    pondering protein supplements (the first day the average dips below 4
    meals)
   */
+console.log('');
 mealsPerDay.reduce(function(acc, curr, idx, arr) {
   var average = acc / idx;
   if (average >= 4 ) {
     // console.log('if');
-    console.log('Day ' + idx + ' average: ' + average);
+    console.log('Day ' + idx + ' average # meals: ' + average);
     return acc + curr;
   } else if (!tooHungryDay) {
     // console.log('else if');
-    console.log('Day ' + idx + ' average: ' + average);
+    console.log('Day ' + idx + ' average # meals: ' + average);
     tooHungryDay = idx;
     console.log('Day ' + idx + ' is the "tooHungryDay"');
     return acc + curr;
   } else {
     //console.log('else');
-    console.log('Day ' + idx + ' average: ' + average);
+    console.log('Day ' + idx + ' average # meals: ' + average);
     return acc + curr;
   }
 });
@@ -91,3 +92,8 @@ expect(
   // Write a second test expecting that tooHungryDay falls within an acceptable answer
   // based on the number of days available in the array. Remember to:
   // pass in your expression, and write a failure and a success message.
+expect(
+  0 <= tooHungryDay < mealsPerDay.length,
+  'tooHungryDay should be between 0 and ' + mealsPerDay.length + 'tooHungryDay = ' + tooHungryDay,
+  '(0 <= ' + tooHungryDay + ' < ' + mealsPerDay.length + ') is a true statement'
+);
