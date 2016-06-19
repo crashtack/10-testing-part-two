@@ -25,7 +25,7 @@ function expect(expression, failureMessage, successMessage) {
     to see what happens when it fails, and change `ricksFaveAnimal`
     to get it to pass!
 */
-var ricksFaveAnimal = 'hyena';
+var ricksFaveAnimal = 'penguin';
 
 expect(
   ricksFaveAnimal === 'penguin',
@@ -38,7 +38,7 @@ expect(
   /* ===================================================================
   ---------------------- Part Two! Hungry Lion ----------------------------
   ======================================================================
-   As long as the lion is well-fed, he doesn't care too much of the
+   As long as the lion is well-fed, he doesn't care too much about the
    humans that pass through. Unfortunately, the new caretaker is a little
    absent-minded.
 
@@ -59,7 +59,28 @@ var tooHungryDay;
    pondering protein supplements (the first day the average dips below 4
    meals)
   */
+mealsPerDay.reduce(function(acc, curr, idx, arr) {
+  var average = acc / idx;
+  if (average >= 4 ) {
+    // console.log('if');
+    console.log('Day ' + idx + ' average: ' + average);
+    return acc + curr;
+  } else if (!tooHungryDay) {
+    // console.log('else if');
+    console.log('Day ' + idx + ' average: ' + average);
+    tooHungryDay = idx;
+    console.log('Day ' + idx + ' is the "tooHungryDay"');
+    return acc + curr;
+  } else {
+    //console.log('else');
+    console.log('Day ' + idx + ' average: ' + average);
+    return acc + curr;
+  }
+});
 
+console.log('');
+console.log('tooHungryDay = ' + tooHungryDay);
+console.log('');
 
 expect(
   typeof(tooHungryDay) === 'number',
